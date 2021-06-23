@@ -10,10 +10,6 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__)
 cors = CORS(app)
 
-print("DATABASE_URL")
-print(os.getenv("DATABASE_URL"))
-engine = create_engine('postgres://awkfjeofiltqzf:71ea0e43dd739b4655198785ffd56a239dcebed19ed2e0dc885bb766f499d483@ec2-23-20-129-146.compute-1.amazonaws.com:5432/d3tr7dd4ghdpd9') 
-
 engine = create_engine(os.getenv("DATABASE_URL"))
 db = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
@@ -139,4 +135,4 @@ def listsDelite():
 
 
 if __name__ == '__main__':
-    app.run(debug = true)
+    app.run(debug = True)
