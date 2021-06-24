@@ -71,7 +71,7 @@ def tasksDelite():
     db.execute("DELETE FROM tasks WHERE id=:id",
         {"id":jsonData["id"]})
     db.commit()
-    return "1"
+    return "completed"
 
 @app.route("/tasks-add", methods=["POST", "GET"])
 @cross_origin()
@@ -80,7 +80,7 @@ def tasksAdd():
     db.execute("INSERT INTO tasks (text, list_id) VALUES ( :text, :list_id)",
                 { "text": jsonData["text"], "list_id": jsonData["listId"]}) 
     db.commit()
-    return "1"
+    return "completed"
 
 @app.route("/lists-add", methods=["POST", "GET"])
 @cross_origin()
@@ -101,7 +101,7 @@ def tasksUpdate():
     db.execute(" UPDATE tasks SET text = :text WHERE id=:id",
         {"id":jsonData["id"], "text":jsonData["newText"]})
     db.commit()
-    return "1"
+    return "completed"
 
 @app.route("/title-update", methods=["POST", "GET"])
 @cross_origin()
@@ -110,7 +110,7 @@ def titleUpdate():
     db.execute(" UPDATE lists SET list_name = :newName WHERE list_id=:id",
         {"id":jsonData["id"], "newName":jsonData["newName"]})
     db.commit()
-    return "1"
+    return "completed"
 
 @app.route("/tasks-check", methods=["POST", "GET"])
 @cross_origin()
@@ -120,7 +120,7 @@ def tasksCheck():
     db.execute("UPDATE tasks SET completed = :completed WHERE id=:id",
         {"id":jsonData["id"], "completed":jsonData["completed"]})
     db.commit()
-    return "1"
+    return "completed"
 
 @app.route("/lists-delete", methods=["POST", "GET"])
 @cross_origin()
@@ -131,7 +131,7 @@ def listsDelite():
     db.execute("DELETE FROM lists WHERE list_id=:id",
         {"id":jsonData["id"]})
     db.commit()
-    return "1"
+    return "completed"
 
 
 if __name__ == '__main__':
